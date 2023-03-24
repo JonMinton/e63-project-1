@@ -1,3 +1,5 @@
+# Add timestamp modules etc
+
 class Tag:
     def __init__(self, name, timestamp = None, customer=None):
         self.name = name
