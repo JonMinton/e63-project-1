@@ -1,7 +1,8 @@
-# Add timestamp modules etc
+import datetime
 
 class Tag:
-    def __init__(self, name, timestamp = None, customer=None):
+    def __init__(self, name, merchant, timestamp = None, id = None):
         self.name = name
-        self.timestamp = timestamp
-        self.customer = customer
+        self.merchant = merchant
+        self.timestamp = datetime.datetime.now()
+        self.id = id

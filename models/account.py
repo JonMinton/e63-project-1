@@ -5,6 +5,7 @@ class Account():
         self.customer = customer
         self.balance = balance
         self.transactions = []
+        self.tags = bank.tags
         self.id = id
 
     def return_balance(self):

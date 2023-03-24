@@ -6,6 +6,7 @@ from models.account import Account
 from models.customer import Customer
 from models.merchant import Merchant
 from models.transaction import Transaction
+from models.tag import Tag
 
 class TestCustomer(unittest.TestCase):
 
@@ -58,6 +59,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(0.99, merc1.revenue)
         self.assertEqual(1, merc1.num_sales)
         self.assertEqual(1, len(customer_account.transactions))
+        self.assertEqual(0.99, customer_account.transactions[0].amount)
 
     def test_customer_cannot_buy_something_they_cannot_afford(self):
         customer_account = self.cst2.accounts[0]
@@ -72,4 +74,35 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(0, merc1.num_sales)
         self.assertEqual(0, len(customer_account.transactions))
 
+    def test_customer_account_inherits_bank_tags(self):
+        bnk = Bank("New Bank")
+        mch = Merchant("Gaudy Gaudi")
+        bnk.tag_merchant("Art Store", mch)
+        self.cst1.open_account(bnk)
+        
+        self.assertEqual(
+            1, len(self.cst1.accounts)
+        )
+        self.assertEqual(
+            1, len(self.cst1.accounts[0].tags)
+        )
+        self.assertEqual(
+            "Art Store",
+            self.cst1.accounts[0].tags[0].name
+        )
+
+    def test_customer_can_add_own_tags(self):
+        bnk = Bank("New Bank")
+        mch = Merchant("Gaudy Gaudi")
+        bnk.tag_merchant("Art Store", mch)
+        self.cst1.open_account(bnk)
+        self.cst1.tag_merchant("Overpriced tat", mch)
+
+        self.assertEqual(
+            2, len(self.cst1.accounts[0].tags)
+        )
+        self.assertEqual(
+            "Overpriced tat",
+            self.cst1.accounts[0].tags[1].name
+        )
 

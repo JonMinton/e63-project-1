@@ -1,6 +1,7 @@
 import unittest
 
 # Add imports here
+from models.merchant import Merchant
 from models.bank import Bank
 from models.customer import Customer
 from models.account import Account
@@ -28,3 +29,12 @@ class TestAccount(unittest.TestCase):
 
     def test_accounts_initially_have_none_for_id(self):
         self.assertEqual(None, self.acnt.id)
+
+    def test_account_inherits_bank_tags(self):
+        self.assertEqual(0, len(self.acnt.tags))
+        bnk2 = Bank("Tagbank")
+        mct1 = Merchant("Stinky Sally's")
+        bnk2.tag_merchant("Perfume", mct1)
+        new_account = Account(bnk2, self.cst1)
+        self.assertEqual(1, len(new_account.tags))
+        self.assertEqual("Perfume", new_account.tags[0].name)
