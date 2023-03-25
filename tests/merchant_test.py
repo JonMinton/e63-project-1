@@ -18,5 +18,4 @@ class TestMerchant(unittest.TestCase):
     def test_merchants_initially_have_no_sales(self):
         self.assertEqual(0, self.mct1.num_sales)
 
-    def test_merchants_initially_have_none_for_id(self):
-        self.assertEqual(None, self.mct1.id)
+

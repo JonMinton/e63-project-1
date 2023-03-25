@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 
+
 from models.merchant import Merchant
 
 # Going to try making a method which works on initialisation
@@ -15,6 +16,19 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def select_all():
+    merchants = []
+
+    sql = "SELECT * FROM merchants"
+    results = run_sql(sql)
+
+    if results:
+        for row in results:
+            merchant = Merchant(row['name'], row['num_sales'], row['revenue'], row['id'] )
+            merchants.append(merchant)
+
+        return merchants
+
 # def save(author):
 #     sql = "INSERT INTO authors (first_name, last_name) VALUES (%s, %s) RETURNING *"
 #     values = [author.first_name, author.last_name]
@@ -24,18 +38,7 @@ def delete(id):
 
 
 
-# def select_all():
-#     authors = []
 
-#     sql = "SELECT * FROM authors"
-#     results = run_sql(sql)
-
-#     if results:
-#         for row in results:
-#             author = Author(row['first_name'], row['last_name'], row['id'] )
-#             authors.append(author)
-
-#         return authors
 
 
 # def select(id):

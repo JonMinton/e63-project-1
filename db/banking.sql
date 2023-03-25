@@ -9,3 +9,7 @@ CREATE TABLE merchants (
     num_sales INT,
     revenue FLOAT
 );
+
+INSERT INTO 
+    merchants (name, num_sales, revenue) 
+    VALUES ('Woolwireworths', 14, 120.0);
