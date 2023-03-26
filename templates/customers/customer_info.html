@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ customer.last_name }} {{ customer.first_name }}</h2>
+<p> {{ customer.first_name }} {{ customer.last_name }} has set a budget of {{ customer.budget }} </p>
+<p> {{ customer.last_name }}'s id is {{ customer.id }}</p>
+
+<h2>Accounts</h2>
+<p>This customer has {{ customer_accounts.__len__() }} accounts open with a 
+    net balance of {{ customer_accounts_sum }}: </p>
+<ul>
+    {% for account in customer_accounts %}
+        <li>{{ account.id }} with balance {{ account.balance }} </li>        
+    {% endfor %}
+</ul> 
+
+<h2>Open new account</h2>
+<form action="/customers/{{ customer.id }} /open_new_account" method = 'post'>
+    <div>
+        <label for="deposit_amount">Enter initial deposit amount:</label>
+        <input type="number" id="deposit_amount" name="deposit_amount" placeholder="deposit amount" value = "0" required autofocus>
+    </div>
+    <button type="submit">Open new account</button>
+</form>    
+
+{% endblock content %}

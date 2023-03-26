@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Accounts</h2>
+<p>A list of all accounts and amounts in each account now follows:</p>
+<ul>
+    {% for account in accounts %}
+        <li>
+            {{ account.id }} has balance {{ account.balance }}
+        </li>
+    {% endfor %}
+</ul>
+    
+{% endblock content %}

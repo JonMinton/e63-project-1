@@ -5,9 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Jon's Nightbank</title>
+    <title>Bank of Merchants</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>
+                <a href = "/merchants">
+                    List of merchants
+                </a>
+            </li>
+            <li> 
+                <a href = "/customers">
+                    List of customers
+                </a>
+            </li>
+            <li> 
+                <a href = "/accounts">
+                    List of accounts
+                </a>
+            </li>
+        </ul>
+    </nav>
     {% block content %}
     {% endblock content %}
 </body>

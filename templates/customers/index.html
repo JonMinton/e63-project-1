@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Customers page</h2>
+    <p>The customers are listed below:</p>
+    <ul>
+        {% for customer in customers %}
+            <li>
+                <a href="/customers/{{ customer.id }}">
+                    {{ customer.first_name}} {{ customer.last_name}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a customer</h2> 
+    <p>Click the button below to add a customer</p>  
+    <form action="/customers/new" method="post">
+        <button type="submit">Create new customer</button>
+    </form>
+{% endblock content %}

@@ -2,15 +2,17 @@ from flask import Flask, render_template
 
 #  ################################################################
 # Put controllers here : examples below
-from controllers.tags_controller import tags_blueprint
-# from controllers.authors_controller import authors_blueprint
-# from controllers.books_controller import books_blueprint
-# from controllers.authors_controller import authors_blueprint
+# from controllers.tags_controller import tags_blueprint
+from controllers.merchants_controller import merchants_blueprint
+from controllers.customers_controller import customers_blueprint
+from controllers.accounts_controller import accounts_blueprint
 
 app = Flask(__name__)
 
 # Register controllers here. Examples below
-app.register_blueprint(tags_blueprint)
+app.register_blueprint(merchants_blueprint)
+app.register_blueprint(customers_blueprint)
+app.register_blueprint(accounts_blueprint)
 # app.register_blueprint(books_blueprint)
 # app.register_blueprint(authors_blueprint)
 

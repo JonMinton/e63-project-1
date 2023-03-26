@@ -1,21 +1,19 @@
 from models.transaction import Transaction
+
 class Account():
-    def __init__(self, bank, balance = 0.0, id = None):
+    def __init__(self, balance = 0.0, id = None):
         self.balance = balance
-        self.bank = bank
-        self.transactions = []
-        self.tags = []
         self.id = id
 
     def return_balance(self):
         return self.balance
     
-    def deposit_monies(self, amt):
-        self.balance += amt
+    # def deposit_monies(self, amt):
+    #     self.balance += amt
 
-    def make_transaction(self, merchant, amount):
-        if self.balance > amount:
-            self.transactions.append(
-                Transaction(self, merchant, amount)
-            )
-            self.balance -= amount
+    # def make_transaction(self, merchant, amount):
+    #     if self.balance > amount:
+    #         self.transactions.append(
+    #             Transaction(self, merchant, amount)
+    #         )
+    #         self.balance -= amount
