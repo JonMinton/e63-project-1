@@ -11,7 +11,7 @@ class Customer:
         self.id = id
 
     def open_account(self, bank, balance = 0.0):
-        new_account = Account(bank, self, balance)
+        new_account = Account(bank, balance)
         self.accounts.append(new_account)
 
     def buy(self, account, merchant, amt):

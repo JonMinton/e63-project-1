@@ -1,11 +1,10 @@
 from models.transaction import Transaction
 class Account():
-    def __init__(self, bank, customer, balance = 0.0, id = None):
-        self.bank = bank
-        self.customer = customer
+    def __init__(self, bank, balance = 0.0, id = None):
         self.balance = balance
+        self.bank = bank
         self.transactions = []
-        self.tags = bank.tags
+        self.tags = []
         self.id = id
 
     def return_balance(self):
