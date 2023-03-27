@@ -4,39 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Bank of Merchants</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href = "/merchants">
-                    List of merchants
-                </a>
-            </li>
-            <li> 
-                <a href = "/customers">
-                    List of customers
-                </a>
-            </li>
-            <li> 
-                <a href = "/accounts">
-                    List of accounts
-                </a>
-            </li>
-            <li> 
-                <a href = "/transactions">
-                    List of transactions
-                </a>
-            </li>
-            <li> 
-                <a href = "/tags">
-                    List of tags
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <nav class = "nav-header">
+            <ul class = "flex-container">
+                <li class = "flex-item">
+                    <a href = "/merchants">
+                        List of merchants
+                    </a>
+                </li>
+                <li class = "flex-item">
+                    <a href = "/customers">
+                        List of customers
+                    </a>
+                </li>
+                <li class = "flex-item">
+                    <a href = "/accounts">
+                        List of accounts
+                    </a>
+                </li>
+                <li class = "flex-item">
+                    <a href = "/transactions">
+                        List of transactions
+                    </a>
+                </li>
+                <li class = "flex-item">
+                    <a href = "/tags">
+                        List of tags
+                    </a>
+                </li>
+            </ul>
+        </nav>    
+    </header>
     {% block content %}
     {% endblock content %}
 </body>

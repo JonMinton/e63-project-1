@@ -5,7 +5,8 @@
     <ul>
         {% for tag in tags %}
             <li>
-                {{ tag.merchant.name }} has been tagged as {{ tag.name }} <a href="/tags/{{ tag.id }}/delete">Delete</a>
+                {{ tag.merchant.name }} has been tagged as {{ tag.name }} 
+                <a href="/tags/{{ tag.id }}/delete">Delete</a>
             </li>
         {% endfor %}
     </ul>
