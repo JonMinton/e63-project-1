@@ -56,7 +56,7 @@ def delete_all():
 
 
 
-# def update(author):
-#     sql = "UPDATE authors SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-#     values = [author.first_name, author.last_name, author.id]
-#     run_sql(sql, values)
+def update(merchant):
+    sql = "UPDATE merchants SET (name, num_sales, revenue) = (%s, %s, %s) WHERE id = %s"
+    values = [merchant.name, merchant.num_sales, merchant.revenue, merchant.id]
+    run_sql(sql, values)

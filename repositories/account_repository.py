@@ -6,6 +6,7 @@ from models.merchant import Merchant
 from models.transaction import Transaction
 
 import repositories.transaction_repository as transaction_repository
+import repositories.merchant_repository as merchant_repository
 
 def save(account):
     sql = "INSERT INTO accounts (balance) VALUES (%s) RETURNING *"
@@ -18,6 +19,7 @@ def delete(id):
     sql = "DELETE FROM accounts WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
 
 def select_all():
     accounts = []
@@ -56,6 +58,11 @@ def delete_all():
     sql = "DELETE FROM accounts"
     run_sql(sql)
 
+def update(account):
+    sql = "UPDATE accounts SET balance = %s WHERE id = %s"
+    values = [account.balance, account.id]
+    run_sql(sql, values)
+
 
 def get_customer_with_account(id):
     sql = """
@@ -86,6 +93,7 @@ def buy_from_merchant(id, merchant_id, price):
     result = result[0]
     account = Account(result['balance'], result['id'])
 
+    price = float(price)
     if account.balance >= price:
         sql = """
             SELECT * FROM merchants 
@@ -101,8 +109,11 @@ def buy_from_merchant(id, merchant_id, price):
         merchant.revenue += price
 
         transaction = Transaction(account, merchant, price)
+
         output = transaction_repository.save(transaction)
         transaction.id = output.id
+        update(account)
+        merchant_repository.update(merchant)
 
     # check if account is sufficient
     # reduce amount in account
@@ -110,7 +121,4 @@ def buy_from_merchant(id, merchant_id, price):
     # increment number of merchant sales
     # add transaction record
 
-# def update(author):
-#     sql = "UPDATE authors SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-#     values = [author.first_name, author.last_name, author.id]
-#     run_sql(sql, values)
+

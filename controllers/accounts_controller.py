@@ -23,10 +23,23 @@ def account_info(id):
         merchants = merchants
     )
 
-@accounts_blueprint.route("/accounts/<id>/buy")
+@accounts_blueprint.route("/accounts/<id>/buy", methods = ['POST'])
 def buy_from_merchant(id):
+    merchant_id = request.form['merchant_id']
+    price = request.form['price']
+    print(f"customer id is {id}")
+    print(f"merchant id is {merchant_id}")
+    print(f"the price is {price}")
+    account_repository.buy_from_merchant(id, merchant_id, price)
+
     account = account_repository.select(id)
-    pass    
+    customer = account_repository.get_customer_with_account(id)
+    merchants = merchant_repository.select_all()
+    return render_template("accounts/account_info.html", 
+        account = account,
+        customer = customer,
+        merchants = merchants
+    )   
 # /accounts/{{ account.id }}/buy"
 # @accounts_blueprint.route("/accounts/new", methods = ['POST'])
 # def new_account():

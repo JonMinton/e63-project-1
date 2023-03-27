@@ -15,6 +15,7 @@ def save(transaction):
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
+    return transaction
 
 
 def delete(id):
@@ -31,8 +32,8 @@ def select_all():
     if results:
         for row in results:
             transaction = Transaction(
-                row['account_id'], 
-                row['merchant_id'], 
+                account_repository.select(row['account_id']), 
+                merchant_repository.select(row['merchant_id']), 
                 row['amount'], row['timestamp'] 
             )
             transactions.append(transaction)
@@ -64,6 +65,24 @@ def delete_all():
     sql = "DELETE FROM customers"
     run_sql(sql)
 
+def select_by_account(account_id):
+    transactions = []
+    sql = "SELECT * FROM transactions WHERE account_id = %s"
+    values = [account_id]
+    results = run_sql(sql, values)
+
+    if results:
+        for row in results:
+            transaction = Transaction(
+                account_repository.select(row['account_id']), 
+                merchant_repository.select(row['merchant_id']), 
+                row['amount'], 
+                row['timestamp'], 
+                row['id']
+            )
+            transactions.append(transaction)
+    
+    return transactions
 
 
 
@@ -74,37 +93,3 @@ def delete_all():
 #     run_sql(sql, values)
 
 
-def get_customer_accounts(customer_id):
-    sql = """
-    SELECT * FROM accounts WHERE id IN (
-        SELECT account_id 
-        FROM customers_accounts WHERE customer_id = %s
-    );    
-    """
-    values = [customer_id]
-    result = run_sql(sql, values)
-    accounts = []
-    if result:
-        for row in result:
-            account = Account(row['balance'], row['id'])
-            accounts.append(account)
-        
-    return accounts
-
-def open_new_account(customer_id, deposit):
-    sql = """
-    INSERT INTO accounts (balance)
-        VALUES (%s)
-        RETURNING *
-    """
-    values = [deposit]
-    result = run_sql(sql, values)
-    new_account_id = result[0]['id']
-    print(f"new_account_id is {new_account_id}")
-    sql = """
-    INSERT INTO customers_accounts (customer_id, account_id)
-        VALUES (%s, %s)
-        RETURNING *
-    """
-    values = [customer_id, new_account_id]
-    run_sql(sql, values)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Transactions information</h2>
-    <p>Here are all transactions recorded</p>
+    <h2>Transactions made by account {{ account_id }} </h2>
+    <p>Here are all transactions recorded by this account</p>
     <ol>
         {% for tx in transactions %}
             <li>

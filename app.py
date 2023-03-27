@@ -6,6 +6,7 @@ from flask import Flask, render_template
 from controllers.merchants_controller import merchants_blueprint
 from controllers.customers_controller import customers_blueprint
 from controllers.accounts_controller import accounts_blueprint
+from controllers.transactions_controller import transactions_blueprint
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ app = Flask(__name__)
 app.register_blueprint(merchants_blueprint)
 app.register_blueprint(customers_blueprint)
 app.register_blueprint(accounts_blueprint)
-# app.register_blueprint(books_blueprint)
-# app.register_blueprint(authors_blueprint)
+app.register_blueprint(transactions_blueprint)
+
 
 @app.route('/')
 def home():
