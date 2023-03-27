@@ -7,7 +7,7 @@
             <li>
                 <a href="/customers/{{ customer.id }}">
                     {{ customer.first_name}} {{ customer.last_name}}
-                </a>
+                </a> <a href="/customers/{{ customer.id }}/delete">Delete</a>
             </li>
         {% endfor %}
     </ul>

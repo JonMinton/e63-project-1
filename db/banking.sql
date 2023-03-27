@@ -75,37 +75,15 @@ CREATE TABLE transactions (
     timestamp TIMESTAMP
 );
 
--- CREATE TABLE tags (
---     id SERIAL PRIMARY KEY,
---     name VARCHAR(255),
---     merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE,
---     timestamp INT
--- );
+CREATE TABLE tags (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE,
+    timestamp INT
+);
 
--- INSERT INTO 
---     tags (name, merchant_id, timestamp)
---     VALUES ('Bric-a-brac', 1, 42);
-
-
-
--- CREATE TABLE banks (
---     id SERIAL PRIMARY KEY,
---     name VARCHAR(255),
---     account_id INT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
---     tag_id INT NOT NULL REFERENCES tags(id) ON DELETE CASCADE
--- );
+INSERT INTO 
+    tags (name, merchant_id, timestamp)
+    VALUES ('Bric-a-brac', 1, 42);
 
 
-
-
-
-
-
-
--- CREATE TABLE transactions (
---     id SERIAL PRIMARY KEY,
---     account_id INT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
---     merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE,
---     amount FLOAT,
---     timestamp INT
--- );
