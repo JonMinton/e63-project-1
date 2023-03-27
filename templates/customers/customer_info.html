@@ -9,7 +9,11 @@
     net balance of {{ customer_accounts_sum }}: </p>
 <ul>
     {% for account in customer_accounts %}
-        <li>{{ account.id }} with balance {{ account.balance }} </li>        
+        <li>
+            <a href="/accounts/{{ account.id }}">
+                {{ account.id }} with balance {{ account.balance }}
+            </a>
+        </li>        
     {% endfor %}
 </ul> 
 

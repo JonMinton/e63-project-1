@@ -67,6 +67,14 @@ INSERT INTO
     customers_accounts (customer_id, account_id)
     VALUES (1, 2);
 
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    account_id INT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE,
+    amount FLOAT,
+    timestamp TIMESTAMP
+);
+
 -- CREATE TABLE tags (
 --     id SERIAL PRIMARY KEY,
 --     name VARCHAR(255),
