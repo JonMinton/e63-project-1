@@ -1,16 +1,82 @@
+
 body {
-    background-color: green;
+    font-family: Georgia, 'Times New Roman', Times, serif
 }
 
+.header-outer {
+    background-color: rgb(179, 191, 174);
+    padding: 1px 10px;
+    border: 5px rgb(125, 177, 129) solid;
+    border-radius: 5%;
+}
 
-.nav-header {
-    background-color: goldenrod;
+.header-container {
+    display:flex;
+    justify-content: space-around;
+    padding:5px;
+    flex-wrap: wrap;
+
+}
+
+.header-card {
+    background-color: rgb(95, 181, 140);
+    border: 2px solid;
+    border-radius: 10%;
+    display:flex;
+    gap:5px;
+    padding: 0px 5px;
+    margin: 10px 0 0 2%;
+    flex-grow: 1;
+    height: 50px;
+    min-width: calc(100% * (1/7) - 10px - 1px);
+    max-width: 150px;
+}
+
+.header-card:hover {
+    background-color: rgb(64, 137, 112);
+}
+
+.header-container a {
+    text-decoration:solid;
+    font-weight: bold;
+    color:rgb(10, 55, 29);
+}
+
+.main-container {
+    background-color: rgb(175, 212, 206);
+    padding: 3%;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10px;
 }
 
-.nav-header ul {
+.main-card {
+    border: 3px solid rgb(15, 85, 28);
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    border-radius: 5%;
+    max-width:250px;
+}
+
+ul {
     list-style-type: none;
 }
 
+.footer-container {
+    display:flex;
+    flex-direction: row-reverse;
+    gap:15px;
+    background-color: rgb(13, 95, 28);
+    padding-right: 5%;
+}
 
+.footer-child {
+    color:rgb(223, 235, 228);
+}
+
+.footer-child a {
+    text-decoration: none;
+    color:rgb(223, 235, 228);
+
+}

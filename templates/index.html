@@ -1,4 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Welcome to BoJ</h1>    
+<main>
+    <h1>The Green Bank</h1>
+    <h2>Stats at a glance...</h2>
+    <nav class="main-container">
+        <article class="main-card">
+            <p class="main-card-icon main-card-item">
+                <object data="{{url_for('static', filename='assets/person-solid.svg')}}" height=50 width=50/></object>
+            </p>
+            <p class="main-card-content main-card-item">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+            </p>        
+        </article>
+
+        <article class="main-card">
+            <p class="main-card-icon main-card-item">
+                <object data="{{url_for('static', filename='assets/tag-solid.svg')}}" height=50 width=50/></object>
+            </p>
+            <p class="main-card-content main-card-item">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+            </p>        
+        </article>
+
+        <article class="main-card">
+            <p class="main-card-icon main-card-item">
+                <object data="{{url_for('static', filename='assets/store-solid.svg')}}" height=50 width=50/></object>
+            </p>
+            <p class="main-card-content main-card-item">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+            </p>        
+        </article>
+
+        <article class="main-card">
+            <p class="main-card-icon main-card-item">
+                <object data="{{url_for('static', filename='assets/book-solid.svg')}}" height=50 width=50/></object>
+            </p>
+            <p class="main-card-content main-card-item">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+            </p>        
+        </article>
+
+        <article class="main-card">
+            <p class="main-card-icon main-card-item">
+                <object data="{{url_for('static', filename='assets/comments-solid.svg')}}" height=50 width=50/></object>
+            </p>
+            <p class="main-card-content main-card-item">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+            </p>        
+        </article>            
+    </nav>
+
+</main>
+
+
 {% endblock content %}
