@@ -1,5 +1,4 @@
 from models.account import Account
-from models.bank import Bank
 from models.merchant import Merchant
 from models.tag import Tag
 

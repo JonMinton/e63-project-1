@@ -3,6 +3,9 @@
     <h2>Account {{ account.id }} (Customer {{ customer.last_name }} ) </h2>
     <p>This account has a balance of {{ account.balance }} </p>
 
+    <h2>View transactions</h2>
+    <p><a href="/accounts/{{ account.id }}/transactions">Click here</a> to view transactions by this account</p>
+
     <h2>Buy something</h2>
 
     <p>Buy from existing vendors</p>

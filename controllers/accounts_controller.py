@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.account import Account
 import repositories.account_repository as account_repository
 import repositories.merchant_repository as merchant_repository
+import repositories.transaction_repository as transaction_repository
 
 accounts_blueprint = Blueprint("accounts", __name__)
 
@@ -40,6 +41,15 @@ def buy_from_merchant(id):
         customer = customer,
         merchants = merchants
     )   
+
+@accounts_blueprint.route("/accounts/<id>/transactions")
+def list_transactions_from_account(id):
+    transactions = transaction_repository.select_by_account(id)
+    return render_template(
+        "accounts/account_transactions.html",
+        transactions = transactions
+    )
+
 # /accounts/{{ account.id }}/buy"
 # @accounts_blueprint.route("/accounts/new", methods = ['POST'])
 # def new_account():

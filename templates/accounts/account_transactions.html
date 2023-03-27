@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Transactions</h2>
+    <p>Here are the transactions made on this account</p>
+    <ol>
+        {% for tx in transactions %}
+            <li>
+                {{tx.id}}: A purchase of {{tx.amount}} from {{tx.merchant.name}}
+            </li>
+        {% endfor %}
+    </ol>    
+{% endblock content %}
