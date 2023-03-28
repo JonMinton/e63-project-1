@@ -74,6 +74,11 @@
     {% block content %}
     {% endblock content %}
     <footer class="footer-container">
+        <a href="/">
+            <p class="footer-child">
+                <img src="{{url_for('static', filename='assets/house-solid.svg')}}" height=30 width=30/></object>
+            </p>   
+        </a>
         <p class ="footer-child">
             <strong>Icons:</strong> <a href="https://fontawesome.com/">FontAwesome</a>
         </p>
@@ -83,7 +88,7 @@
         <p class="footer-child">
             <strong>Implementation:</strong> Jon Minton
         </p>
-
+ 
     </footer>
 </body>
 </html>

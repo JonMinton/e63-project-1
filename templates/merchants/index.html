@@ -14,6 +14,30 @@
         {% endfor %}
     </ul>
 
+    <nav class="main-container">
+        {% for merchant in merchants %}
+        <a href="merchants/{{ merchant.id }}">
+            <div class="entity-card">
+                <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/store-solid.svg') }}" ></object>
+                <div class="entity-card-rhs">
+                    <p class="entity-name">
+                        {{ merchant.id }}. <strong>Name:</strong> {{ merchant.name }}
+                    </p>
+                    <div class="entity-options">
+                        <a href="merchants/{{ merchant.id }}/edit">
+                            <img class="entity-option-edit" src="{{ url_for('static', filename='assets/pen-to-square-solid.svg') }}"></img>
+                        </a>
+                        <a href="accounts/{{ account.id }}/delete">
+                            <img class="entity-option-delete" src="{{ url_for('static', filename='assets/pen-to-square-solid.svg') }}"></img>
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </nav>
+    
+
     <h2>Add a merchant</h2> 
     <p>Click the button below to add a merchant</p>  
     <form action="/merchants/new" method="post">

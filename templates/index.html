@@ -9,7 +9,7 @@
                 <object data="{{url_for('static', filename='assets/person-solid.svg')}}" height=50 width=50/></object>
             </p>
             <p class="main-card-content main-card-item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+                The Green Bank currently has {{ n_customers }} customers
             </p>        
         </article>
 
@@ -18,7 +18,7 @@
                 <object data="{{url_for('static', filename='assets/tag-solid.svg')}}" height=50 width=50/></object>
             </p>
             <p class="main-card-content main-card-item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+                The Green Bank currently has {{ n_tags }} tags in operation
             </p>        
         </article>
 
@@ -27,7 +27,7 @@
                 <object data="{{url_for('static', filename='assets/store-solid.svg')}}" height=50 width=50/></object>
             </p>
             <p class="main-card-content main-card-item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+                The Green Bank currently has {{ n_merchants }} merchants approved. In total {{ n_merchant_sales }} sales have been recorded with these merchants, comprising a total sales revenue of £{{ total_merchant_revenue }}
             </p>        
         </article>
 
@@ -36,7 +36,7 @@
                 <object data="{{url_for('static', filename='assets/book-solid.svg')}}" height=50 width=50/></object>
             </p>
             <p class="main-card-content main-card-item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+                The Green Bank currently has {{ n_accounts }} accounts to manage, which currently have a total net balance of £ {{ total_balance }}
             </p>        
         </article>
 
@@ -45,7 +45,7 @@
                 <object data="{{url_for('static', filename='assets/comments-solid.svg')}}" height=50 width=50/></object>
             </p>
             <p class="main-card-content main-card-item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in porro, accusamus mollitia, blanditiis vitae et esse saepe, perferendis sequi quis tenetur! Odit aperiam ex esse aspernatur, impedit laborum possimus!
+                A total of {{ n_transactions }} transactions have been made through the Green Bank, comprising a total sales value of £{{ total_transaction_value }}
             </p>        
         </article>            
     </nav>

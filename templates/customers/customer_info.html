@@ -7,15 +7,31 @@
 <h2>Accounts</h2>
 <p>This customer has {{ customer_accounts.__len__() }} accounts open with a 
     net balance of {{ customer_accounts_sum }}: </p>
-<ul>
+
+
+<nav class="main-container">
     {% for account in customer_accounts %}
-        <li>
-            <a href="/accounts/{{ account.id }}">
-                {{ account.id }} with balance {{ account.balance }}
-            </a>
-        </li>        
+    <a href="accounts/{{ account.id }}">
+        <div class="entity-card">
+            <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/book-solid.svg') }}" ></object>
+            <div class="entity-card-rhs">
+                <p class="entity-name">
+                    {{ account.id }} with balance {{ account.balance }}
+                </p>
+                <div class="entity-options">
+                    <a href="accounts/{{ account.id }}/deposit">
+                        <img class="entity-option-edit" src="{{ url_for('static', filename='assets/square-plus-solid.svg') }}"></img>
+                    </a>
+                    <a href="accounts/{{ account.id }}/delete">
+                        <img class="entity-option-delete" src="{{ url_for('static', filename='assets/pen-to-square-solid.svg') }}"></img>
+                    </a>
+                </div>    
+            </div>
+        </div>
+    </a>
     {% endfor %}
-</ul> 
+</nav>
+
 
 <h2>Open new account</h2>
 <form action="/customers/{{ customer.id }} /open_new_account" method = 'post'>

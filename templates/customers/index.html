@@ -2,15 +2,31 @@
 {% block content %}
     <h2>Customers page</h2>
     <p>The customers are listed below:</p>
-    <ul>
+
+    <nav class="main-container">
         {% for customer in customers %}
-            <li>
-                <a href="/customers/{{ customer.id }}">
-                    {{ customer.first_name}} {{ customer.last_name}}
-                </a> <a href="/customers/{{ customer.id }}/delete">Delete</a>
-            </li>
+        <a href="customers/{{ customer.id }}">
+            <div class="entity-card">
+                <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/person-solid.svg') }}" ></object>
+                <div class="entity-card-rhs">
+                    <p class="entity-name">
+                        {{ customer.first_name }} {{ customer.last_name }}
+                    </p>
+                    <div class="entity-options">
+                        <a href="customers/{{ customer.id }}/edit">
+                            <img class="entity-option-edit" src="{{ url_for('static', filename='assets/trash-can-solid.svg') }}"></img>
+                        </a>
+                        <a href="customers/{{ customer.id }}/delete">
+                            <img class="entity-option-delete" src="{{ url_for('static', filename='assets/pen-to-square-solid.svg') }}"></img>
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        </a>
         {% endfor %}
-    </ul>
+    </nav>
+   
+
 
     <h2>Add a customer</h2> 
     <p>Click the button below to add a customer</p>  
