@@ -70,6 +70,14 @@ body {
     transition: 0.3s;    
 }
 
+.entity-card-template {
+    background-color: beige;
+    display: flex;
+    width: 300px;
+    gap:10px;
+    border: 3px dashed black;
+    border-radius: 5%;
+}
 
 .entity-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -104,6 +112,7 @@ ul {
 }
 
 .footer-container {
+    margin-top: 20px;
     display:flex;
     flex-direction: row-reverse;
     gap:15px;

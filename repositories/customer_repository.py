@@ -54,13 +54,10 @@ def delete_all():
     run_sql(sql)
 
 
-
-
-
-# def update(author):
-#     sql = "UPDATE authors SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-#     values = [author.first_name, author.last_name, author.id]
-#     run_sql(sql, values)
+def update(customer):
+    sql = "UPDATE customers SET (first_name, last_name, budget) = (%s, %s, %s) WHERE id = %s"
+    values = [customer.first_name, customer.last_name, customer.budget, customer.id]
+    run_sql(sql, values)
 
 
 def get_customer_accounts(customer_id):
