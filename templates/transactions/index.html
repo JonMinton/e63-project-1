@@ -2,13 +2,21 @@
 {% block content %}
     <h2>Transactions information</h2>
     <p>Here are all transactions recorded</p>
-    <ol>
+    <table class = "tx-table">
+        <tr>
+            <th>Account ID</th>
+            <th>Purchase value</th>
+            <th>Merchant</th>
+            <th>Timestamp</th>
+        </tr>
         {% for tx in transactions %}
-            <li>
-                Account {{ tx.account.id }} made a purchase of value {{ tx.amount }} from merchant {{ tx.merchant.name }}
-            </li>
+            <tr>
+                <td>{{ tx.account.id }}    </td>
+                <td>{{ tx.amount     }}    </td>
+                <td>{{ tx.merchant.name }} </td>
+                <td>{{ tx.timestamp}}     </td>
+            </tr>
         {% endfor %}
-
-    </ol>
+    </table>
 
 {% endblock content %}

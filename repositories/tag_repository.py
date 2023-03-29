@@ -67,3 +67,19 @@ def update(tag):
     sql = "UPDATE tags SET (name, merchant_id) = (%s, %s) WHERE id = %s"
     values = [tag.name, tag.merchant.id, tag.id]
     run_sql(sql, values)
+
+def select_by_merchant(merchant_id):
+    sql = "SELECT * FROM tags WHERE id = %s"
+    values = [merchant_id]
+    results = run_sql(sql, values)
+    tags = []
+    if results:
+        for row in results:
+            tag = Tag(
+                row['name'], 
+                merchant_repository.select(row['merchant_id']), 
+                row['id']
+            )
+            tags.append(tag)
+        return tags
+    return None

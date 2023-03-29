@@ -19,6 +19,9 @@ def delete(id):
     sql = "DELETE FROM accounts WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+    sql = "DELETE FROM customers_accounts WHERE account_id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def select_all():
@@ -56,6 +59,8 @@ def select(id):
 
 def delete_all():
     sql = "DELETE FROM accounts"
+    run_sql(sql)
+    sql = "DELETE FROM customers_accounts"
     run_sql(sql)
 
 def update(account):

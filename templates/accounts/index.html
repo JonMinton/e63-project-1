@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Accounts</h2>
-<p>A list of all accounts and amounts in each account now follows:</p>
-<ul>
+<p>The Green Bank's accounts are displayed below:</p>
+<nav class="main-container">
     {% for account in accounts %}
-        <li>
-            {{ account.id }} has balance {{ account.balance }}
-        </li>
+    <a href="accounts/{{ account.id }}">
+        <div class="entity-card">
+            <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/book-solid.svg') }}" ></object>
+            <div class="entity-card-rhs">
+                <p class="entity-name">
+                    {{ account.id }}. <strong>Balance:</strong> {{ account.balance }}
+                </p>
+                <div class="entity-options">
+                    <a href="accounts/{{ account.id }}"">
+                        <img class="entity-option-edit" src="{{ url_for('static', filename='assets/plus-minus-solid.svg') }}"></img>
+                    </a>
+                    {% if account.balance == 0 %}
+                    <a href="accounts/{{ account.id }}/delete">
+                        <img class="entity-option-delete" src="{{ url_for('static', filename='assets/trash-can-solid.svg') }}"></img>
+                    </a>                        
+                    {% endif %}
+                </div>    
+            </div>
+        </div>
+    </a>
     {% endfor %}
-</ul>
-    
+</nav>
+
+
 {% endblock content %}

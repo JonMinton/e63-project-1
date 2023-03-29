@@ -3,6 +3,14 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif
 }
 
+table {
+    border:2px solid darkgreen;
+}
+
+th {
+    background-color: darkseagreen;
+}
+
 .header-outer {
     background-color: rgb(179, 191, 174);
     padding: 1px 10px;

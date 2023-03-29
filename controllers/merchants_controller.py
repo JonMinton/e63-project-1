@@ -3,6 +3,7 @@ from flask import Blueprint
 
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
+import repositories.tag_repository as tag_repository
 
 merchants_blueprint = Blueprint("merchants", __name__)
 
@@ -16,7 +17,12 @@ def merchants():
 def merchant_info(id):
     merchant = merchant_repository.select(id)
     print(f"{merchant.name} has id {merchant.id}")
-    return render_template("/merchants/merchant_info.html", merchant = merchant)
+    merchant_tags = tag_repository.select_by_merchant(id)
+    return render_template(
+        "/merchants/merchant_info.html", 
+        merchant = merchant,
+        merchant_tags = merchant_tags
+    )
 
 @merchants_blueprint.route("/merchants/new", methods = ['POST'])
 def new_merchant():
