@@ -5,7 +5,7 @@
     <ul>
         {% for tag in tags %}
             <li>
-                {{ tag.merchant.name }} has been tagged as {{ tag.name }} 
+                {{tag.id}}: {{ tag.merchant.name }} has been tagged as {{ tag.name }} 
                 <a href="/tags/{{ tag.id }}/delete">Delete</a>
             </li>
         {% endfor %}
@@ -14,10 +14,10 @@
     <h2>Tag a merchant</h2>
     <form action="/tags/new" method="post">
         <div>
-          <label for="merchants">Merchant:</label>
-          <select name="merchants" id="merchants">
-            {% for merchant in mercants %}
-                <option value="{{ merchant.name }}">{{ merchant.name }}</option>                
+          <label for="merchant_id">Merchant:</label>
+          <select name="merchant_id" id="merchant_id">
+            {% for merchant in merchants %}
+                <option value="{{ merchant.id }}">{{ merchant.name }}</option>                
             {% endfor %}
           </select>
         </div>

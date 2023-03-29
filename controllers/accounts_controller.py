@@ -17,11 +17,14 @@ def accounts():
 def account_info(id):
     account = account_repository.select(id)
     customer = account_repository.get_customer_with_account(id)
+    transactions = transaction_repository.select_by_account(id)
+    print(f"This account has {len(transactions)} transactions")
     merchants = merchant_repository.select_all()
     return render_template("accounts/account_info.html", 
         account = account,
         customer = customer,
-        merchants = merchants
+        merchants = merchants,
+        transactions = transactions
     )
 
 @accounts_blueprint.route("/accounts/<id>/buy", methods = ['POST'])
@@ -41,6 +44,25 @@ def buy_from_merchant(id):
         customer = customer,
         merchants = merchants
     )   
+
+@accounts_blueprint.route("/accounts/<id>/deposit", methods = ['POST'])
+def deposit_into_account(id):
+    deposit_amount = request.form['deposit_amount']
+    account = account_repository.select(id)
+    account.balance += float(deposit_amount)
+    account_repository.update(account)
+    return redirect(f"/accounts/{id}")
+
+@accounts_blueprint.route("/accounts/<id>/withdrawal", methods = ['POST'])
+def withdrawal_into_account(id):
+    withdrawal_amount = request.form['withdrawal_amount']
+    account = account_repository.select(id)
+    if account.balance >= float(withdrawal_amount):
+        account.balance -= float(withdrawal_amount)
+        account_repository.update(account)
+
+    return redirect(f"/accounts/{id}")
+
 
 @accounts_blueprint.route("/accounts/<id>/transactions")
 def list_transactions_from_account(id):

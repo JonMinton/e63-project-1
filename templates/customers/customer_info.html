@@ -11,7 +11,7 @@
 
 <nav class="main-container">
     {% for account in customer_accounts %}
-    <a href="accounts/{{ account.id }}">
+    <a href="/accounts/{{ account.id }}">
         <div class="entity-card">
             <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/book-solid.svg') }}" ></object>
             <div class="entity-card-rhs">
@@ -34,7 +34,7 @@
 
 
 <h2>Open new account</h2>
-<form action="/customers/{{ customer.id }} /open_new_account" method = 'post'>
+<form action="/customers/{{ customer.id }}/open_new_account" method = 'post'>
     <div>
         <label for="deposit_amount">Enter initial deposit amount:</label>
         <input type="number" id="deposit_amount" name="deposit_amount" placeholder="deposit amount" value = "0" required autofocus>

@@ -70,6 +70,17 @@ body {
     transition: 0.3s;    
 }
 
+.wide-entity-card {
+    background-color: beige;
+    display: flex;
+    width: 450px;
+    gap:10px;
+    border: 3px solid darkgreen;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;    
+}
+
 .entity-card-template {
     background-color: beige;
     display: flex;
@@ -79,7 +90,7 @@ body {
     border-radius: 5%;
 }
 
-.entity-card:hover {
+.entity-card:hover, .wide-entity-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 
 }

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Edit Merchant Details</h2>
+    <p>Amend name, revenue, and number of sales as required</p>
+
+    <div class="entity-card-template">
+        <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/store-solid.svg') }}" ></object>
+        <div class="entity-card-rhs">
+            <form action="/merchants/edit" method = 'post'>
+                <p class="entity-name">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value = {{merchant.name}} required autofocus>
+                    </div>
+                    
+                    <div>
+                        <label for="num_sales">Number of Sales:</label>
+                        <input type="number" id="num_sales" name="num_sales" value = {{merchant.num_sales}} required>
+                    </div>
+
+                    <div>
+                        <label for="revenue">Revenue</label>
+                        <input type="number" id="revenue" name="revenue" step="any" value = {{merchant.revenue}} required>
+                    </div>
+                </p>
+                <div class="entity-options">
+                    <div>
+                        <label for="merc_id">Submit</label>
+                        <button type="submit" id="merc_id", name="merc_id" value="{{merchant.id}}">Submit</button>
+                    </div>
+                </div>    
+            </form>    
+        </div>
+    </div>
+
+
+{% endblock content %}

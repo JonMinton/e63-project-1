@@ -1,32 +1,103 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Account {{ account.id }} (Customer {{ customer.last_name }} ) </h2>
-    <p>This account has a balance of {{ account.balance }} </p>
+    <h2>Account {{ account.id }}</h2>
 
-    <h2>View transactions</h2>
-    <p><a href="/accounts/{{ account.id }}/transactions">Click here</a> to view transactions by this account</p>
+    <h3>Customer and Account</h3>
+    <nav class="main-container">
+        <a href="customers/{{ customer.id }}">
+            <div class="entity-card">
+                <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/person-solid.svg') }}" ></object>
+                <div class="entity-card-rhs">
+                    <p class="entity-name">
+                        {{ customer.first_name }} {{ customer.last_name }}
+                    </p>
+                    <div class="entity-options">
+                        <a href="customers/{{ customer.id }}/edit">
+                            <img class="entity-option-edit" src="{{ url_for('static', filename='assets/pen-to-square-solid.svg') }}"></img>
+                        </a>
+                        <a href="customers/{{ customer.id }}/delete">
+                            <img class="entity-option-delete" src="{{ url_for('static', filename='assets/trash-can-solid.svg') }}"></img>
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        </a>
+
+
+        <div class="wide-entity-card">
+            <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/book-solid.svg') }}" ></object>
+            <div class="entity-card-rhs">
+                <p class="entity-name">
+                    <strong>{{ account.id}}</strong>. Balance {{ account.balance }}
+                </p>
+                <div class="entity-options">
+                    <form action="/accounts/{{ account.id }}/deposit" method="post">
+                        <div>
+                            <label for="deposit_amount">Deposit Amount</label>
+                            <input type="number" id="deposit_amount" name="deposit_amount" step="any" required placeholder="">
+                        </div>
+                        <button type="submit"">Deposit</button>            
+                    </form>
+                    <form action="/accounts/{{ account.id }}/withdrawal" method="post">
+                        <div>
+                            <label for="withdrawal_amount">Withdrawal Amount</label>
+                            <input type="number" id="withdrawal_amount" name="withdrawal_amount" step="any" required placeholder="">
+                        </div>
+                        <button type="submit"">Withdrawal</button>            
+                    </form>
+                </div>    
+            </div>
+        </div>
+
+
+    </nav>
+
+    <h3>Transactions Log</h3>
+    {% if transactions.__len__() == 0 %}
+        There are no transactions from this account.
+    {% else %}
+    <table>
+        <tr>
+          <th>id</th>
+          <th>Merchant</th>
+          <th>Amount</th>
+          <th>Timestamp</th>
+        </tr>
+        {% for tx in transactions %}
+        <tr>
+            <td>{{ tx.id }}</td>
+            <td>{{ tx.merchant.name }} </td>
+            <td>{{ tx.amount }} </td>
+            <td>{{ tx.timestamp }} </td>
+          </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
 
     <h2>Buy something</h2>
+    <nav class="main-container">
+        {% for merchant in merchants %}
+                <div class="entity-card">
+                    <form action="/accounts/{{ account.id }}/buy" method="post">
+                        <object class="entity-card-main-image" width=100%  data="{{ url_for('static', filename='assets/book-solid.svg') }}" ></object>
+                        <div class="entity-card-rhs">
+                            <p class="entity-name">
+                                <strong>{{ merchant.name}}</strong>. 
+                            </p>
+                            <div class="entity-options">
+                                <div>
+                                    <label for="price">Price</label>
+                                    <input type="number" id="price" name="price" step="any" placeholder="Enter purchase price">
+                                </div>
+                                <button type="submit" id="merchant_id" name="merchant_id" value="{{merchant.id}}">Buy!</button>            
+                            </div>    
+                        </div>
+                    </form>   
 
-    <p>Buy from existing vendors</p>
-    <form action="/accounts/{{ account.id }}/buy" method = "post">
-        <div>
-            <label for="merchant_name">Merchant:</label>
-            <select id="merchant_name" name ="merchant_id">
-               {% for merchant in merchants %}
-                    <option value="{{ merchant.id }}">
-                        {{ merchant.name }}
-                    </option>
-               {% endfor %}     
-            </select> 
-        </div>
+                </div>
+        {% endfor %}
 
-        <div>
-            <label for="price">Price</label>
-            <input type="number" id="price" name="price" step="any" placeholder="Enter purchase price">
-        </div>
+    </nav>
 
-        <button type="submit">Make purchase</button>
-    </form>
 
 {% endblock content %}

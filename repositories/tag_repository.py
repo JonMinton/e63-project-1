@@ -30,11 +30,12 @@ def select_all():
         for row in results:
             tag = Tag(
                 row['name'],
-                merchant_repository.select(row['merchant_id'])
+                merchant_repository.select(row['merchant_id']),
+                row['id']
             )
             tags.append(tag)
 
-        return tags
+    return tags
 
 
 def select(id):
@@ -50,7 +51,8 @@ def select(id):
         result = results[0]
         tag = Tag(
             result['name'],
-            merchant_repository.select(result['merchant_id'])
+            merchant_repository.select(result['merchant_id']),
+            result['id']
         )
     else:
         return None

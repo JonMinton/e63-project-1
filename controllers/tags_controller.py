@@ -11,6 +11,7 @@ tags_blueprint = Blueprint("tags", __name__)
 def tags():
     tags = tag_repository.select_all() 
     merchants = merchant_repository.select_all()
+    
 
     return render_template("/tags/index.html", 
                            tags = tags, 
@@ -18,13 +19,15 @@ def tags():
 
 @tags_blueprint.route("/tags/new", methods = ['POST'])
 def add_tag():
+    print(request.form)
     merchant_id = request.form['merchant_id']
+    print(f"merchant_id: {merchant_id}")
     new_tag = request.form['new_tag']
     tag = Tag(
         new_tag, 
         merchant_repository.select(merchant_id)
     )
-    tag_repository.save(tag)
+    tag = tag_repository.save(tag)
     return redirect("/tags")
 
 @tags_blueprint.route("/tags/<id>/delete")

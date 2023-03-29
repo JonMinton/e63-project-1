@@ -72,3 +72,12 @@ def delete_customer(id):
     customer_repository.delete(id)
     return redirect("/customers")
 
+@customers_blueprint.route("/customers/<id>/accounts")
+def view_customer_accounts(id):
+    customer = customer_repository.select(id)
+    accounts = customer_repository.get_customer_accounts(id)
+    return render_template(
+        "/customer/customer_accounts_info.html",
+        customer = customer,
+        accounts = accounts
+    )
