@@ -60,9 +60,3 @@ def save_edit_merchant():
     merchant_repository.update(merchant)
     return redirect("/merchants")
 
-# # DELETE
-# # DELETE '/visits/<id>'
-# @visits_blueprint.route("/visits/<id>/delete", methods=['POST'])
-# def delete_task(id):
-#     visit_repository.delete(id)
-#     return redirect('/visits')
