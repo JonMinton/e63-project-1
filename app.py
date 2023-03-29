@@ -27,23 +27,42 @@ app.register_blueprint(tags_blueprint)
 def home():
 
     customers = customer_repository.select_all()
-    n_customers = len(customers)
+    if customers == None:
+        n_customers = 0
+    else:
+        n_customers = len(customers)
 
     tags = tag_repository.select_all()
-    n_tags = len(tags)
+    if tags == None:
+        n_tags = 0
+    else:
+        n_tags = len(tags)
 
     merchants = merchant_repository.select_all()
-    n_merchants = len(merchants)
-    n_merchant_sales = sum([x.num_sales for x in merchants])
-    total_merchant_revenue = sum([x.revenue for x in merchants])
+    if merchants == None:
+        n_merchants = 0
+        n_merchant_sales = 0
+        total_merchant_revenue = 0.0
+    else:
+        n_merchants = len(merchants)
+        n_merchant_sales = sum([x.num_sales for x in merchants])
+        total_merchant_revenue = sum([x.revenue for x in merchants])
 
     accounts = account_repository.select_all()
-    n_accounts = len(accounts)
-    total_balance = sum([x.balance for x in accounts])
+    if accounts == None:
+        n_accounts = 0
+        total_balance = 0.0
+    else:
+        n_accounts = len(accounts)
+        total_balance = sum([x.balance for x in accounts])
 
     transactions = transaction_repository.select_all()
-    n_transactions = len(transactions)
-    total_transaction_value = sum([x.amount for x in transactions])
+    if transactions == None:
+        n_transactions = 0
+        total_transaction_value = 0.0
+    else: 
+        n_transactions = len(transactions)
+        total_transaction_value = sum([x.amount for x in transactions])
 
     return render_template(
         'index.html',

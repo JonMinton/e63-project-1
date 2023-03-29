@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Transactions information</h2>
-    <p>Here are all transactions recorded</p>
-    <table class = "tx-table">
-        <tr>
-            <th>Account ID</th>
-            <th>Purchase value</th>
-            <th>Merchant</th>
-            <th>Timestamp</th>
-        </tr>
-        {% for tx in transactions %}
+    {% if transactions == None %}
+        <p><em>No transactions have yet been registered</em></p>
+    {% else %}
+        <p>Here are all transactions recorded</p>
+        <table class = "tx-table">
             <tr>
-                <td>{{ tx.account.id }}    </td>
-                <td>{{ tx.amount     }}    </td>
-                <td>{{ tx.merchant.name }} </td>
-                <td>{{ tx.timestamp}}     </td>
+                <th>Account ID</th>
+                <th>Purchase value</th>
+                <th>Merchant</th>
+                <th>Timestamp</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for tx in transactions %}
+                <tr>
+                    <td>{{ tx.account.id }}    </td>
+                    <td>{{ tx.amount     }}    </td>
+                    <td>{{ tx.merchant.name }} </td>
+                    <td>{{ tx.timestamp}}     </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+    {% endif %}
 
 {% endblock content %}

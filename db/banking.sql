@@ -24,6 +24,10 @@ INSERT INTO
     merchants (name, num_sales, revenue)
     VALUES ('Griff''s', 120, 1503.50);
 
+INSERT INTO 
+    merchants (name, num_sales, revenue)
+    VALUES ('Drama Llama''s', 5, 200.0);
+
 CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
@@ -78,12 +82,13 @@ CREATE TABLE transactions (
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE,
-    timestamp INT
+    merchant_id INT NOT NULL REFERENCES merchants(id) ON DELETE CASCADE
 );
 
 INSERT INTO 
-    tags (name, merchant_id, timestamp)
-    VALUES ('Bric-a-brac', 1, 42);
+    tags (name, merchant_id)
+    VALUES ('Bric-a-brac', 1);
 
-
+INSERT INTO 
+    tags (name, merchant_id)
+    VALUES ('Pet Store', 3);

@@ -8,6 +8,11 @@
 <p>This customer has {{ customer_accounts.__len__() }} accounts open with a 
     net balance of {{ customer_accounts_sum }}: </p>
 
+{% if customer.budget > customer_accounts_sum %}
+    <p>As the customer's accounts are greater than their budget, all is okay</p>    
+{% else %}
+    <p style="color:red;"><strong>Warning</strong>: The customer's accounts contain less money than they have set as budget. </p>    
+{% endif %}
 
 <nav class="main-container">
     {% for account in customer_accounts %}
