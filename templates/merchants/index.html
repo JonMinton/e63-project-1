@@ -4,15 +4,6 @@
     <p>
         Below is a list of merchants. 
     </p>
-    <ul>
-        {% for merchant in merchants %}
-            <li>
-                <a href="/merchants/{{ merchant.id }}"> 
-                    {{ merchant.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
 
     <nav class="main-container">
         {% for merchant in merchants %}
